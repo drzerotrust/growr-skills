@@ -1,0 +1,30 @@
+name: Growr compatibility
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned Growr release
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+          dependency = json.loads(Path("compatibility.json").read_text())["growr"]
+          package = "git+%s@%s" % (dependency["repository"], dependency["ref"])
+          subprocess.run([sys.executable, "-m", "pip", "install", package], check=True)
+          PY
+      - run: python -m unittest discover -s tests -v

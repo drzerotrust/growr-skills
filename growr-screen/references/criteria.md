@@ -1,6 +1,6 @@
 # Criteria 1.0
 
-The runtime is `scripts/playbooks/token_screen.py`. Use one of `--provider`,
+The runtime is `growr playbook token-screen`. Use one of `--provider`,
 `--mints MINT [MINT ...]`, or `--input FILE`, plus `--criteria FILE`.
 
 ```json

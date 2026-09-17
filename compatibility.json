@@ -1,0 +1,14 @@
+{
+  "skills_version": "0.1.0",
+  "growr": {
+    "repository": "https://github.com/drzerotrust/growr.git",
+    "ref": "v0.3.0",
+    "minimum": "0.3.0",
+    "maximum_exclusive": "0.4.0"
+  },
+  "contracts": {
+    "cli": "2.2",
+    "playbook": "1.1",
+    "screening": "1.0"
+  }
+}

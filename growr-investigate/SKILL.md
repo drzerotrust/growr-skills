@@ -1,7 +1,7 @@
 ---
 name: growr-investigate
 description: Investigate Solana token holders, wallet holdings, shared assets and bounded transaction activity with Growr playbooks. Use for who holds a mint, what wallets own, and account or signature evidence after a target is known.
-metadata: {"openclaw": {"requires": {"env": ["GROWR_ROOT", "GROWR_PYTHON"]}}}
+metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv", "kind": "uv", "package": "git+https://github.com/drzerotrust/growr.git@v0.3.0", "bins": ["growr"], "label": "Install Growr v0.3.0 (uv)"}]}}
 ---
 
 # Growr investigations
@@ -13,11 +13,26 @@ before interpreting holdings, overlap or transaction activity.
 
 ## Runtime
 
-Use the absolute checkout `GROWR_ROOT` and interpreter `GROWR_PYTHON` with Growr
-requirements installed. These paths must work in the actual OpenClaw execution
-environment. The child runner resolves Growr independently of the working
-directory. The repository-root `.env` supplies providers; do not read or print
-it. Jupiter labels are optional; `--no-jupiter` selects an RPC-only inventory.
+`growr` must be installed on PATH in the actual execution environment,
+including inside the sandbox when enabled. Supported Growr versions are
+0.3.x, with CLI schema 2.2, playbook 1.1 and screening 1.0. Before starting:
+
+```bash
+growr doctor --json --min-version 0.3.0 --max-version 0.4.0 \
+  --require-cli-schema 2.2 --require-playbook-version 1.1 \
+  --require-screening-version 1.0
+```
+
+Require exit zero, doctor_version 1.0 and status success. If Growr is missing
+or incompatible, report the dependency problem instead of guessing commands.
+The pinned installer targets Growr v0.3.0; that release must be published
+before remote installation works. Doctor is offline and does not establish
+provider connectivity. Never silently upgrade or substitute another tool.
+
+Configuration uses process environment, `GROWR_ENV_FILE`, a checkout `.env`,
+or the user configuration directory. Do not read or print credentials.
+Jupiter discovery requires JUPITER_API_KEY; Stonkfun search is public, and
+RPC-only or offline workflows do not require a Jupiter key.
 
 ## Workflow
 
@@ -35,11 +50,11 @@ it. Jupiter labels are optional; `--no-jupiter` selects an RPC-only inventory.
    addresses/signatures, times, scope limits and a saved-evidence reference.
 
 ```bash
-"$GROWR_PYTHON" "$GROWR_ROOT/scripts/playbooks/token_holders.py" \
+growr playbook token-holders \
   "$MINT" --wallet-limit 5 --json > holders.json
-"$GROWR_PYTHON" "$GROWR_ROOT/scripts/playbooks/shared_holdings.py" \
+growr playbook shared-holdings \
   holders.json --json > overlap.json
-"$GROWR_PYTHON" "$GROWR_ROOT/scripts/playbooks/activity.py" \
+growr playbook activity \
   "$WALLET" --token-account "$TOKEN_ACCOUNT" --limit 10 \
   --transactions 15 --max-rpc-calls 20 --json > activity.json
 ```

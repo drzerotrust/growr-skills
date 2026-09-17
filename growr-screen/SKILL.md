@@ -1,7 +1,7 @@
 ---
 name: growr-screen
 description: Screen and compare Solana tokens against a user's measurable criteria using Growr. Use for best-fit shortlists, listing evaluation, explicit mint comparisons, and offline reranking of saved evidence.
-metadata: {"openclaw": {"requires": {"env": ["GROWR_ROOT", "GROWR_PYTHON"]}}}
+metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv", "kind": "uv", "package": "git+https://github.com/drzerotrust/growr.git@v0.3.0", "bins": ["growr"], "label": "Install Growr v0.3.0 (uv)"}]}}
 ---
 
 # Growr token screening
@@ -13,11 +13,26 @@ own discovery; another skill does not need to be invoked first.
 
 ## Runtime
 
-`GROWR_ROOT` is the absolute checkout path; `GROWR_PYTHON` is its installed
-Python interpreter. Both paths and dependencies must be available in the actual
-execution environment. Growr loads the root `.env`; do not expose its contents.
-Jupiter metadata requires its API key. Stonkfun search and configured RPC have
-independent requirements. Optional unavailable sources remain coverage gaps.
+`growr` must be installed on PATH in the actual execution environment,
+including inside the sandbox when enabled. Supported Growr versions are
+0.3.x, with CLI schema 2.2, playbook 1.1 and screening 1.0. Before starting:
+
+```bash
+growr doctor --json --min-version 0.3.0 --max-version 0.4.0 \
+  --require-cli-schema 2.2 --require-playbook-version 1.1 \
+  --require-screening-version 1.0
+```
+
+Require exit zero, doctor_version 1.0 and status success. If Growr is missing
+or incompatible, report the dependency problem instead of guessing commands.
+The pinned installer targets Growr v0.3.0; that release must be published
+before remote installation works. Doctor is offline and does not establish
+provider connectivity. Never silently upgrade or substitute another tool.
+
+Configuration uses process environment, `GROWR_ENV_FILE`, a checkout `.env`,
+or the user configuration directory. Do not read or print credentials.
+Jupiter discovery requires JUPITER_API_KEY; Stonkfun search is public, and
+RPC-only or offline workflows do not require a Jupiter key.
 
 ## Workflow
 
@@ -39,11 +54,11 @@ independent requirements. Optional unavailable sources remain coverage gaps.
    Fewer matches than requested, including zero, is a valid outcome.
 
 ```bash
-"$GROWR_PYTHON" "$GROWR_ROOT/scripts/playbooks/token_screen.py" \
+growr playbook token-screen \
   --criteria criteria.json --provider stonks --category xstock \
   --feed volume --scan-limit 5 --json > screen.json
 
-"$GROWR_PYTHON" "$GROWR_ROOT/scripts/playbooks/token_screen.py" \
+growr playbook token-screen \
   --criteria revised-criteria.json --input screen.json --json
 ```
 

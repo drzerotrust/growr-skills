@@ -2,7 +2,7 @@
 
 Use an absolute checkout/interpreter as described in SKILL.md. Global flags
 such as `--json`, `--max-http-calls`, and `--max-rpc-calls` precede the command.
-These examples show only the arguments after `growr.py`.
+These examples show only the arguments after `growr`.
 
 | Intent | Arguments |
 | --- | --- |
@@ -34,4 +34,4 @@ Never sum token-level Jupiter liquidity across pool records. Missing metrics
 remain unknown. A provider's organic score, verification flag, or social link
 does not establish safety or identity.
 
-Supported contracts: CLI schema 2.2, discoverable with `growr.py schema`.
+Supported contracts: CLI schema 2.2, discoverable with `growr schema`.

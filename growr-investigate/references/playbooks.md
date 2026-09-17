@@ -1,18 +1,18 @@
 # Select a bounded workflow
 
-All paths below are relative to `GROWR_ROOT`; use `GROWR_PYTHON`. Playbook
-`--json` is a script option. For `growr.py`, global flags precede the command.
+Use the installed `growr` command. Playbook options follow the recipe
+name; scan/discovery global flags precede their command.
 
 | Question | Entry point | Default network upper bound |
 | --- | --- | --- |
-| Who appears in the token sample, and what else do they hold? | `scripts/playbooks/token_holders.py MINT --json` | 24 RPC + 10 Jupiter HTTP. |
-| What does one wallet currently hold? | `scripts/playbooks/wallet_holdings.py WALLET --json` | 4 RPC + 10 Jupiter HTTP. |
-| What assets overlap in a saved cohort? | `scripts/playbooks/shared_holdings.py holders.json --json` | Zero network calls. |
-| What recently referenced these explicit addresses? | `scripts/playbooks/activity.py ADDRESS --json` | One default address: up to 11 RPC, zero provider HTTP. |
-| Inspect one transaction | `growr.py --json transaction SIGNATURE` | One RPC. |
-| Locate current token accounts | `growr.py --json wallet WALLET` | Four RPC. |
-| Inspect a token account's state | `growr.py --json token-account ACCOUNT` | Three RPC; summary history is the owner's. |
-| Inspect that token account's history | `growr.py --json history ACCOUNT --limit 10 --details` | Up to 11 RPC. |
+| Who appears in the token sample, and what else do they hold? | `growr playbook token-holders MINT --json` | 24 RPC + 10 Jupiter HTTP. |
+| What does one wallet currently hold? | `growr playbook wallet-holdings WALLET --json` | 4 RPC + 10 Jupiter HTTP. |
+| What assets overlap in a saved cohort? | `growr playbook shared-holdings holders.json --json` | Zero network calls. |
+| What recently referenced these explicit addresses? | `growr playbook activity ADDRESS --json` | One default address: up to 11 RPC, zero provider HTTP. |
+| Inspect one transaction | `growr --json transaction SIGNATURE` | One RPC. |
+| Locate current token accounts | `growr --json wallet WALLET` | Four RPC. |
+| Inspect a token account's state | `growr --json token-account ACCOUNT` | Three RPC; summary history is the owner's. |
+| Inspect that token account's history | `growr --json history ACCOUNT --limit 10 --details` | Up to 11 RPC. |
 
 Holder and wallet options: --no-jupiter, --jupiter-batch-limit (1-10, default
 10), --mint-limit (0-50, default 0), --timeout (1-120, default 30 seconds per
