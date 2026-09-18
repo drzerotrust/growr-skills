@@ -2,6 +2,8 @@
 
 Use the installed `growr` command. Playbook options follow the recipe
 name; scan/discovery global flags precede their command.
+Choose the answer layout from
+[investigation output]({baseDir}/references/output.md).
 
 | Question | Entry point | Default network upper bound |
 | --- | --- | --- |
@@ -10,6 +12,7 @@ name; scan/discovery global flags precede their command.
 | What assets overlap in a saved cohort? | `growr playbook shared-holdings holders.json --json` | Zero network calls. |
 | What recently referenced these explicit addresses? | `growr playbook activity ADDRESS --json` | One default address: up to 11 RPC, zero provider HTTP. |
 | Inspect one transaction | `growr --json transaction SIGNATURE` | One RPC. |
+| Inspect a mint's state | `growr --json token MINT --no-jupiter --no-rugcheck` | Up to four RPC, zero provider HTTP. |
 | Locate current token accounts | `growr --json wallet WALLET` | Four RPC. |
 | Inspect a token account's state | `growr --json token-account ACCOUNT` | Three RPC; summary history is the owner's. |
 | Inspect that token account's history | `growr --json history ACCOUNT --limit 10 --details` | Up to 11 RPC. |

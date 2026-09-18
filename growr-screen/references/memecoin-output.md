@@ -1,8 +1,12 @@
 # Growr memecoin output standard
 
-Apply this default when the user asks to screen, find, rank or list memecoins
-with Growr. An explicit user format or ranking takes precedence. This is an
-agent response format; keep CLI JSON and saved evidence unchanged.
+Use this profile for a memecoin list or shortlist: finding candidates,
+screening a feed or ranking candidates for selection. Select the profile by
+the user's question, not merely by a token's category. Identity lookups,
+criteria diagnostics, explicit comparisons, wallet/holder investigations and
+transaction explanations use their task-specific output unless the user asks
+for these cards. An explicit format or ranking takes precedence. Keep CLI
+JSON and saved evidence unchanged.
 
 ## Card format
 

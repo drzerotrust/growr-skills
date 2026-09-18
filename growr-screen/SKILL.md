@@ -11,15 +11,17 @@ then use the deterministic screening playbook. Explain the best matches within
 the examined scope, with exclusions and unknowns. This workflow includes its
 own discovery; another skill does not need to be invoked first.
 
-## Memecoin output
+## Choose the output
 
-For memecoin find/list/screen/rank requests, read and follow the
-[memecoin output standard]({baseDir}/references/memecoin-output.md)
-before choosing criteria and composing the answer. Unless the user overrides
-the format or priorities, use its compact cards and order by distribution,
-liquidity/turnover, then organic and social evidence. Keep full mints,
-wallet/account pairs, missing values and shared-holder highlights explicit.
-Choose visual markers for the actual findings and coverage; no emoji is fixed.
+Read [screening output]({baseDir}/references/output.md) and choose by the
+user's question: a general shortlist, explicit token comparison, one-token
+criteria check or offline reranking. User-specified formats and priorities win.
+For a memecoin shortlist, additionally read
+[memecoin cards]({baseDir}/references/memecoin-output.md) before choosing
+criteria: distribution, liquidity/turnover, then organic/social evidence are
+defaults for that profile only. A token's category does not override an
+explicit comparison or diagnostic question. Choose optional symbols and
+emojis for the actual findings and coverage.
 
 ## Runtime
 
@@ -59,10 +61,10 @@ RPC-only or offline workflows do not require a Jupiter key.
    no subprocesses or network requests and recalculates decisions from evidence.
 4. Read [interpretation]({baseDir}/references/interpretation.md). Preserve
    pass/fail/unknown, source and scope distinctions, timestamps, and request use.
-5. Report the shortlist with a reason for each position, rejected conditions,
-   unresolved candidates, the scope examined, and an evidence-file reference.
-   For memecoins, use the linked cards and one short scope/footer line rather
-   than repeating a prose report. Fewer matches, including zero, is valid.
+5. Use the selected output profile, retaining rejected conditions, unresolved
+   candidates, examined scope and an evidence reference where relevant.
+   Fewer matches, including zero, is valid. Do not add market-card fields
+   to a focused comparison or criteria question just to fill a template.
 
 ```bash
 growr playbook token-screen \

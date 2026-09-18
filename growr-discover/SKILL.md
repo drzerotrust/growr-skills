@@ -9,15 +9,16 @@ metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv"
 Return candidate mints and attributed discovery evidence for the user's query.
 Keep names and symbols as labels; exact mint identity determines the asset.
 
-## Memecoin output
+## Choose the output
 
-For memecoin find/list/screen/rank requests, read and follow the
-[memecoin output standard]({baseDir}/references/memecoin-output.md)
-before collecting evidence and composing the answer. Use its compact cards,
-raw mints, explicit top-20 measure and shared-holder highlights unless the
-user requests another format. Missing holder evidence stays unknown;
-formatting alone does not authorize RPC scans or turn feed order into ranking.
-Choose visual markers for the actual findings and coverage; no emoji is fixed.
+Read [discovery output]({baseDir}/references/output.md) and choose by the
+user's question: an identity lookup, search candidates or a feed listing.
+An explicit format takes precedence; a one-fact question needs a direct answer.
+For a memecoin list or shortlist, use the conditional
+[memecoin cards]({baseDir}/references/memecoin-output.md). A token being a
+memecoin does not by itself require those cards for an identity lookup.
+Formatting never authorizes extra scans. Symbols and emojis are optional
+and should reflect the findings and coverage.
 
 ## Runtime
 
@@ -51,9 +52,9 @@ RPC-only or offline workflows do not require a Jupiter key.
    during discovery; `--on-chain` expands the request cost per distinct mint.
 3. Parse schema 2.2. Check process status, document status and coverage. A
    partial report can exit zero. A failed lookup is not an empty token universe.
-4. Return exact mints, names/symbols where present, provider, relevant available
-   measurements, retrieval time, and feed/page/query scope. Preserve separate
-   pool records when a Stonkfun mint appears more than once.
+4. Use the selected output profile with exact mints, provider, relevant
+   available measurements, retrieval time, and feed/page/query scope.
+   Preserve separate pool evidence when a Stonkfun mint appears more than once.
 
 Example:
 

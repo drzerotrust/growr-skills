@@ -22,7 +22,7 @@ The runtime is `growr playbook token-screen`. Use one of `--provider`,
 ```
 
 This is an example research profile, not a default investment strategy. Use
-the user's conditions. For memecoin defaults and turnover presentation, read
+the user's conditions. For memecoin shortlists and turnover presentation, read
 [the output standard]({baseDir}/references/memecoin-output.md); turnover is
 not a supported criteria 1.0 field. All requirements are ANDed.
 Numeric operators: eq, gte, lte, gt, lt. Boolean and category requirements

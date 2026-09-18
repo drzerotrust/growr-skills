@@ -94,6 +94,26 @@ report can exit zero. Social presence is not authenticity, holder samples
 are not a full census, and overlap does not prove shared control or bundles.
 Skills do not trade or submit transactions.
 
+## Responses
+
+The answer follows the question, with formats selected for each capability:
+
+| Request | Default response |
+| --- | --- |
+| Identity lookup, search or feed browsing | Identity summary or candidate table with full mints and provider scope. |
+| General screening or token comparison | Criteria, observed values, decisions and reasons for the order. |
+| Offline reranking | Updated results from saved evidence, with original observation times. |
+| Token holders | Sampled owner/account balances and other holdings when requested. |
+| Wallet inventory | Token quantities, account addresses, program/state and completeness. |
+| Shared holdings | Cohort overlap with per-owner amounts, known absence and unknown presence. |
+| Wallet or token-account activity | Bounded signature timeline with execution and detail coverage. |
+| One transaction | Outcome, fees, supported actions and missing evidence. |
+| Mint or token-account inspection | Relevant state, quantities, authorities and attributed context. |
+
+An explicit format takes precedence; a simple fact gets a direct answer.
+Mixed questions combine the relevant sections. A memecoin target does not
+turn a wallet inventory or transaction explanation into a market shortlist.
+
 Memecoin shortlists default to compact “organic-ish” cards with full mints,
 market cap, 24h volume, turnover, holder count, the reported top-20 share,
 social links and up to five wallet/token-account pairs. Ranking prioritizes

@@ -1,26 +1,26 @@
 ---
 name: growr-investigate
-description: Investigate Solana token holders, wallet holdings, shared assets and bounded transaction activity with Growr playbooks. Use for who holds a mint, what wallets own, and account or signature evidence after a target is known.
+description: Inspect Solana mint and token-account state, token holders, wallet holdings, shared assets and bounded transaction activity with Growr. Use for who holds a mint, what wallets own, and account or signature evidence after a target is known.
 metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv", "kind": "uv", "package": "git+https://github.com/drzerotrust/growr.git@v0.3.0", "bins": ["growr"], "label": "Install Growr v0.3.0 (uv)"}]}}
 ---
 
 # Growr investigations
 
-Choose the playbook that answers the user's question, run it within explicit
+Choose the workflow that answers the user's question, run it within explicit
 bounds, and explain its evidence. Read [playbook commands]({baseDir}/references/playbooks.md)
 when choosing a workflow, and [evidence rules]({baseDir}/references/evidence.md)
 before interpreting holdings, overlap or transaction activity.
 
-## Memecoin output
+## Choose the output
 
-When an investigation contributes to a memecoin find/list/screen/rank answer,
-read and follow the
-[memecoin output standard]({baseDir}/references/memecoin-output.md).
-Use wallet/token-account pairs and exact token quantities in its holder rows;
-highlight the same observed authority across different mints. User-requested
-formats take precedence. Ordinary wallet or transaction answers retain their
-own evidence-focused format.
-Choose visual markers for the actual findings and coverage; no emoji is fixed.
+Read [investigation output]({baseDir}/references/output.md) and use only the
+section answering the question: sampled holders, wallet holdings, shared
+holdings, activity/history, one transaction, mint state or token-account state.
+User-specified formats take precedence; a one-fact question needs a direct
+answer. Combine relevant sections for a mixed investigation without repeating
+the same evidence. A memecoin target still gets the appropriate investigation
+format; market-screen cards and ranking are not investigation defaults.
+Choose optional symbols and emojis for the actual findings and coverage.
 
 ## Runtime
 
@@ -58,7 +58,8 @@ RPC-only or offline workflows do not require a Jupiter key.
 4. For activity, select token accounts from validated inventory explicitly.
    `--token-account` does not itself verify ownership by the primary wallet.
 5. Return the observed balances or executed actions, exact supporting account
-   addresses/signatures, times, scope limits and a saved-evidence reference.
+   addresses/signatures, times, scope limits and a saved-evidence reference
+   using the selected output profile.
 
 ```bash
 growr playbook token-holders \

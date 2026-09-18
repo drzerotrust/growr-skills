@@ -43,7 +43,8 @@ evidence artifacts, not cryptographically authenticated chain proofs.
 
 A concise answer should state: examined source and count; matching mints and
 reasons; failures and unknowns; freshness and sample limits; request use; and
-the saved report path. For memecoins, follow
+the saved report path. Select the layout from
+[screening output]({baseDir}/references/output.md). For memecoin shortlists, follow
 [the output standard]({baseDir}/references/memecoin-output.md): cards carry
 the evidence, with compact notes for exclusions and scope. Its derived turnover
 can refine presentation order across all passing candidates; preserve the
