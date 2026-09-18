@@ -19,6 +19,9 @@ For a memecoin list or shortlist, use the conditional
 memecoin does not by itself require those cards for an identity lookup.
 Formatting never authorizes extra scans. Symbols and emojis are optional
 and should reflect the findings and coverage.
+Memecoin searches/lists return only token results or a one-line empty/failure
+status. Omit filenames, process summaries, filter recaps and routine footers;
+the memecoin delivery rules override general reporting details.
 
 ## Runtime
 
@@ -53,7 +56,9 @@ RPC-only or offline workflows do not require a Jupiter key.
 3. Parse schema 2.2. Check process status, document status and coverage. A
    partial report can exit zero. A failed lookup is not an empty token universe.
 4. Use the selected output profile with exact mints, provider, relevant
-   available measurements, retrieval time, and feed/page/query scope.
+   available measurements and the profile's delivery rules. Retain retrieval
+   time and feed/page/query scope in evidence; show them when the profile calls
+   for them, not as an automatic footer on memecoin results.
    Preserve separate pool evidence when a Stonkfun mint appears more than once.
 
 Example:

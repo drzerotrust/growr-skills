@@ -3,6 +3,8 @@
 Choose the layout by the question. These are guides, not forms to fill with
 unrelated fields. A requested format wins, including raw Growr JSON. Answer a
 single-fact question directly. Symbols and emojis are optional and contextual.
+Memecoin lists use their results-only delivery rules instead of the general
+scope and evidence details below.
 
 ## Identity lookup
 
@@ -62,6 +64,8 @@ known pagination; do not imply that one page is the whole market.
 For a memecoin list or shortlist, read
 [memecoin cards]({baseDir}/references/memecoin-output.md). Discovery-only
 cards use the discovery heading and make untested distribution visible.
+Return only the cards or the profile's one-line empty/unavailable status.
+Omit filenames, paths, process narration, filter recaps and scope footers.
 This is a conditional presentation profile, not a reason to run more RPC.
 
 Criteria-based “best,” “safer,” or ranked selection belongs to the screening
@@ -71,7 +75,9 @@ formats or focused identity questions retain the layouts above.
 ## Evidence and gaps
 
 Use the existing report only: full identities, relevant source/scope,
-retrieval time and coverage. Include a saved-evidence path if one was created,
-never invent one. Keep zero distinct from unknown and returned-empty distinct
-from failed. Show the actual result count without padding. Do not request
+retrieval time and coverage. Include a saved-evidence path only when the
+selected profile or user requests it; never invent one. Memecoin results do
+not expose these paths or append an evidence footer. Keep zero distinct from
+unknown and returned-empty distinct from failed. Show the actual result count
+without padding. Do not request
 metadata, holder data or a new provider merely to fill a display column.

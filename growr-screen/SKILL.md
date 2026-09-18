@@ -7,9 +7,9 @@ metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv"
 # Growr token screening
 
 Translate the user's research request into explicit conditions and priorities,
-then use the deterministic screening playbook. Explain the best matches within
-the examined scope, with exclusions and unknowns. This workflow includes its
-own discovery; another skill does not need to be invoked first.
+then use the deterministic screening playbook. Evaluate matches within the
+examined scope, preserving exclusions and unknowns in the report. The workflow
+includes discovery; another skill does not need to be invoked first.
 
 ## Choose the output
 
@@ -22,6 +22,9 @@ criteria: distribution, liquidity/turnover, then organic/social evidence are
 defaults for that profile only. A token's category does not override an
 explicit comparison or diagnostic question. Choose optional symbols and
 emojis for the actual findings and coverage.
+Memecoin searches/lists return only token results or a one-line empty/failure
+status. Omit filenames, process summaries, filter recaps and routine footers;
+the memecoin delivery rules override general reporting details.
 
 ## Runtime
 
@@ -52,8 +55,9 @@ RPC-only or offline workflows do not require a Jupiter key.
    from ordered ranking preferences. Translate only supported measurements.
    Clarify ambiguous goals such as “good” when they materially change the
    shortlist; do not invent a risk tolerance, profit target or time horizon.
-2. Write a criteria 1.0 JSON file to an explicit local working path. State any
-   chosen thresholds, age limits and budgets in the result. Do not overwrite
+2. Write a criteria 1.0 JSON file to an explicit local working path. Record
+   chosen thresholds, age limits and budgets in the working evidence; expose
+   them only as required by the selected output profile. Do not overwrite
    existing evidence files. Keep `verify_on_chain` true unless provider-only
    screening is requested or explicitly disclosed as the chosen scope.
 3. Select one input: bounded provider discovery, explicit mint addresses, or
@@ -61,8 +65,9 @@ RPC-only or offline workflows do not require a Jupiter key.
    no subprocesses or network requests and recalculates decisions from evidence.
 4. Read [interpretation]({baseDir}/references/interpretation.md). Preserve
    pass/fail/unknown, source and scope distinctions, timestamps, and request use.
-5. Use the selected output profile, retaining rejected conditions, unresolved
-   candidates, examined scope and an evidence reference where relevant.
+5. Use the selected output profile. Retain rejected conditions, unresolved
+   candidates, examined scope and evidence references in the underlying report;
+   do not copy them into results-only memecoin responses.
    Fewer matches, including zero, is valid. Do not add market-card fields
    to a focused comparison or criteria question just to fill a template.
 

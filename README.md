@@ -123,6 +123,13 @@ are never padded. Ask for another format or ranking to override these defaults.
 Symbols and emojis adapt to the workflow, findings and evidence gaps; the
 examples do not prescribe fixed icons.
 
+Memecoin results contain only token cards and an optional short heading.
+With no matches, return “No matching tokens found.” Unavailable or incomplete
+checks receive a brief status instead of a false no-match conclusion.
+Filenames, evidence paths, scan summaries, filter recaps and routine footers
+are omitted unless explicitly requested. Material token-specific warnings
+and observed holder overlap stay in the affected cards.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

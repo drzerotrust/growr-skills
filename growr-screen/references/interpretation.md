@@ -41,12 +41,14 @@ evaluation time; changed freshness can change the result. It does not trust
 cached rankings. Original scope/times remain visible. Saved reports are local
 evidence artifacts, not cryptographically authenticated chain proofs.
 
-A concise answer should state: examined source and count; matching mints and
-reasons; failures and unknowns; freshness and sample limits; request use; and
-the saved report path. Select the layout from
+For general reports, relevant context can include examined source and count,
+matching mints and reasons, failures and unknowns, freshness, sample limits,
+request use and a saved report path. Select the layout from
 [screening output]({baseDir}/references/output.md). For memecoin shortlists, follow
-[the output standard]({baseDir}/references/memecoin-output.md): cards carry
-the evidence, with compact notes for exclusions and scope. Its derived turnover
-can refine presentation order across all passing candidates; preserve the
-saved playbook order and identify any presentation reranking. A follow-up
+[the output standard]({baseDir}/references/memecoin-output.md): return only
+token cards or its one-line empty/unavailable status, without filenames,
+filter recaps, exclusions, process narration or scope/evidence footers.
+Derived turnover can refine presentation order across all passing candidates;
+preserve the saved playbook order and keep presentation reranking in working
+evidence, explaining it only if requested. A follow-up
 holder or activity investigation remains a separate bounded workflow.

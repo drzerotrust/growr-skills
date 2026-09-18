@@ -4,6 +4,8 @@ Select a shortlist, comparison, diagnostic or replay layout by the question.
 A requested format wins, including raw Growr JSON. A one-fact answer does not
 need a full report. Symbols and emojis are optional and should describe the
 observed outcome, not suggest a blanket endorsement.
+Memecoin shortlists use their results-only delivery rules instead of the
+general filter, exclusion and scope summaries below.
 
 ## General shortlist
 
@@ -70,6 +72,8 @@ Use for saved `token_screen` or discovery evidence. State the input file,
 original observation time/range and current evaluation time. Say “saved
 evidence,” not a fresh market scan. Report the new decisions and order using
 the appropriate shortlist or comparison layout.
+For memecoin results, omit the filename and use a brief saved/stale qualifier
+in the heading or affected field instead of this diagnostic preamble.
 
 If an original screen is available, describe actual rank/decision changes
 and their cause, such as revised criteria or expired freshness. A discovery
@@ -81,6 +85,8 @@ claim new RPC verification: replay makes no network requests.
 For finding, listing or ranking memecoins for selection, additionally read
 [memecoin cards]({baseDir}/references/memecoin-output.md). Its field choices,
 distribution-first defaults and turnover presentation apply to that profile.
+Return only token cards, or its one-line empty/unavailable status. Do not add
+filenames, process narration, filter/ranking recaps, exclusions or a footer.
 They do not replace a focused comparison or diagnostic layout merely because
 one token is a memecoin.
 
@@ -88,8 +94,9 @@ one token is a memecoin.
 
 Read [interpretation]({baseDir}/references/interpretation.md) for decision,
 coverage and source rules. Keep raw mint addresses and original report
-decisions intact. Present the relevant measurements and gaps compactly, with
-one scope/evidence footer and request use when available.
+decisions intact. Present the relevant measurements and gaps compactly.
+General reports can include a scope/evidence footer and request use;
+results-only memecoin responses omit them.
 
 If JSON is requested, provide the actual supported report or its saved path
 as requested; do not silently substitute an invented response schema. Display
