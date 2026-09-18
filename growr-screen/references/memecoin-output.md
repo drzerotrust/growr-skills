@@ -52,6 +52,8 @@ icon. Token symbols remain the actual reported tickers.
 [RESULT_MARKER] **[SYMBOL] — [Token name]**
 
 - Mint: `[MINT_ADDRESS]`
+- Pair: **[SYMBOL] / [QUOTE_SYMBOL]** · [QUOTE_NAME] · [QUOTE_CATEGORY]
+- Quote mint: `[QUOTE_MINT]`
 - **$[MARKET_CAP] mcap** | **$[VOLUME_24H] 24h volume** | **[TURNOVER]% turnover**
 - **[HOLDER_COUNT] holders** | **top 20: [TOP_20_SHARE]%** of supply (largest token accounts)
 - **[Social account](SOCIAL_MEDIA_URL)**
@@ -61,6 +63,10 @@ icon. Token symbols remain the actual reported tickers.
     [AMOUNT_OF_TOKENS] tokens
 - [FINDING_MARKER] [material finding, when present]
 ```
+
+The Pair and Quote mint rows apply to Stonkfun listings; omit them for other
+sources without pairing evidence. Omit missing optional quote name/category
+labels rather than printing placeholders.
 
 Repeat holder rows up to five times and cards for the actual results. Keep
 full mint, wallet and token-account addresses. A wallet authority can be a
@@ -85,6 +91,20 @@ complete the template.
 - Identity: use `identity.mint` and same-mint names/symbols from discovery or
   token metadata. A symbol match alone cannot join records. Group repeated
   Stonkfun pools into one mint card while retaining their separate evidence.
+- Stonkfun pairing: display the reported pair from the same pool record's
+  `identity.symbol` and `facts.quote_symbol`, with `facts.quote_name`
+  and `facts.quote_category` when present. Show the full
+  `facts.quote_mint` separately. In screening reports, follow the
+  candidate's `evidence_indices` into `evidence[].record` and use the
+  exact-mint Stonkfun pool record. These fields already arrive with listings;
+  no additional API or RPC call is needed.
+  Use an available name or full mint when a symbol is absent. If no quote
+  identity is reported, show `Pair: unknown`; an absent quote mint is
+  `Quote mint: unknown`. Never guess SOL, USDC or a quote token from the
+  category, reward currency or another pool. If a mint has multiple returned
+  pools, retain each pool's pair with its `identity.pool` address rather
+  than choosing one silently. Describe only reported pairs, not every venue
+  trading the mint or independently verified live pool contents.
 - Market cap: use an explicit USD market-cap measurement, never FDV as a
   substitute. Jupiter exposes `metrics.jupiter.values.market_cap`;
   Stonkfun records expose `facts.market_cap_usd`. Sourced combined
