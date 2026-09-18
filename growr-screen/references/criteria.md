@@ -22,9 +22,12 @@ The runtime is `growr playbook token-screen`. Use one of `--provider`,
 ```
 
 This is an example research profile, not a default investment strategy. Use
-the user's conditions. All requirements are ANDed. Numeric operators: eq,
-gte, lte, gt, lt. Boolean and category requirements support only eq. Numeric
-thresholds can be exact decimal strings. Ranking uses numeric fields with
+the user's conditions. For memecoin defaults and turnover presentation, read
+[the output standard]({baseDir}/references/memecoin-output.md); turnover is
+not a supported criteria 1.0 field. All requirements are ANDed.
+Numeric operators: eq, gte, lte, gt, lt. Boolean and category requirements
+support only eq. Numeric thresholds can be exact decimal strings.
+Ranking uses numeric fields with
 asc/desc in priority order; exact mint breaks ties. Missing ranking inputs
 sort after complete ranking inputs and remain visible.
 

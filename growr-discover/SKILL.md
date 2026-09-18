@@ -9,6 +9,16 @@ metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv"
 Return candidate mints and attributed discovery evidence for the user's query.
 Keep names and symbols as labels; exact mint identity determines the asset.
 
+## Memecoin output
+
+For memecoin find/list/screen/rank requests, read and follow the
+[memecoin output standard]({baseDir}/references/memecoin-output.md)
+before collecting evidence and composing the answer. Use its compact cards,
+raw mints, explicit top-20 measure and shared-holder highlights unless the
+user requests another format. Missing holder evidence stays unknown;
+formatting alone does not authorize RPC scans or turn feed order into ranking.
+Choose visual markers for the actual findings and coverage; no emoji is fixed.
+
 ## Runtime
 
 `growr` must be installed on PATH in the actual execution environment,

@@ -43,5 +43,9 @@ evidence artifacts, not cryptographically authenticated chain proofs.
 
 A concise answer should state: examined source and count; matching mints and
 reasons; failures and unknowns; freshness and sample limits; request use; and
-the saved report path. A follow-up holder or activity investigation is a
-separate bounded workflow, not proof that the shortlisted token is safe.
+the saved report path. For memecoins, follow
+[the output standard]({baseDir}/references/memecoin-output.md): cards carry
+the evidence, with compact notes for exclusions and scope. Its derived turnover
+can refine presentation order across all passing candidates; preserve the
+saved playbook order and identify any presentation reranking. A follow-up
+holder or activity investigation remains a separate bounded workflow.

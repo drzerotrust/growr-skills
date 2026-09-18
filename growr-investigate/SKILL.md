@@ -11,6 +11,17 @@ bounds, and explain its evidence. Read [playbook commands]({baseDir}/references/
 when choosing a workflow, and [evidence rules]({baseDir}/references/evidence.md)
 before interpreting holdings, overlap or transaction activity.
 
+## Memecoin output
+
+When an investigation contributes to a memecoin find/list/screen/rank answer,
+read and follow the
+[memecoin output standard]({baseDir}/references/memecoin-output.md).
+Use wallet/token-account pairs and exact token quantities in its holder rows;
+highlight the same observed authority across different mints. User-requested
+formats take precedence. Ordinary wallet or transaction answers retain their
+own evidence-focused format.
+Choose visual markers for the actual findings and coverage; no emoji is fixed.
+
 ## Runtime
 
 `growr` must be installed on PATH in the actual execution environment,

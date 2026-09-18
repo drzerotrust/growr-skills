@@ -1,6 +1,6 @@
 # Discovery commands and scope
 
-Use an absolute checkout/interpreter as described in SKILL.md. Global flags
+Use the installed `growr` executable described in SKILL.md. Global flags
 such as `--json`, `--max-http-calls`, and `--max-rpc-calls` precede the command.
 These examples show only the arguments after `growr`.
 

@@ -94,6 +94,15 @@ report can exit zero. Social presence is not authenticity, holder samples
 are not a full census, and overlap does not prove shared control or bundles.
 Skills do not trade or submit transactions.
 
+Memecoin shortlists default to compact “organic-ish” cards with full mints,
+market cap, 24h volume, turnover, holder count, the reported top-20 share,
+social links and up to five wallet/token-account pairs. Ranking prioritizes
+distribution, then liquidity/turnover, then organic and social evidence.
+Shared holders are highlighted; unavailable data stays unknown and results
+are never padded. Ask for another format or ranking to override these defaults.
+Symbols and emojis adapt to the workflow, findings and evidence gaps; the
+examples do not prescribe fixed icons.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
