@@ -114,23 +114,25 @@ An explicit format takes precedence; a simple fact gets a direct answer.
 Mixed questions combine the relevant sections. A memecoin target does not
 turn a wallet inventory or transaction explanation into a market shortlist.
 
-Memecoin shortlists default to compact “organic-ish” cards with full mints,
-market cap, 24h volume, turnover, holder count, the reported top-20 share,
-social links and up to five wallet/token-account pairs. Ranking prioritizes
+Memecoin shortlists inspect up to ten candidates and return the strongest one,
+two or three. Cards include full mints, market cap, 24h volume, turnover,
+holder count, reported top-20 share and social links. Ranking prioritizes
 distribution, then liquidity/turnover, then organic and social evidence.
 Stonkfun cards also show the reported trading pair, quote asset and quote mint
 when available; missing pairing information stays unknown.
-Shared holders are highlighted; unavailable data stays unknown and results
-are never padded. Ask for another format or ranking to override these defaults.
+Unavailable data stays unknown and results are never padded. Keep the complete
+response under 3,000 characters for delivery through a channel such as chat,
+Discord or Telegram. Ask for another format or ranking to override these
+defaults.
 Symbols and emojis adapt to the workflow, findings and evidence gaps; the
 examples do not prescribe fixed icons.
 
-Memecoin results contain only token cards and an optional short heading.
+Memecoin results contain only one to three token cards and an optional short heading.
 With no matches, return “No matching tokens found.” Unavailable or incomplete
 checks receive a brief status instead of a false no-match conclusion.
 Filenames, evidence paths, scan summaries, filter recaps and routine footers
 are omitted unless explicitly requested. Material token-specific warnings
-and observed holder overlap stay in the affected cards.
+stay in the affected cards.
 
 ## License
 

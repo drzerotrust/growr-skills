@@ -15,8 +15,8 @@ overrides general instructions to include scope, methods or evidence footers.
 Unless the user explicitly asks for diagnostics, explanation or evidence:
 
 - With matches, return only the token cards and an optional short results
-  heading. Keep material token-specific warnings, missing values and observed
-  holder overlap within the affected cards.
+  heading. Keep material token-specific warnings and missing values within
+  the affected cards.
 - With a completed search and no matches, return only:
   `No matching tokens found.`
 - If no match can be verified because required checks were unavailable,
@@ -33,11 +33,17 @@ Unless the user explicitly asks for diagnostics, explanation or evidence:
 Keep criteria, exclusions, provenance, timestamps and saved evidence in the
 underlying reports. Use them to verify and rank candidates without copying
 that bookkeeping into the response. Do not add narration before the result.
+Keep the final response at or below 3,000 characters, including headings,
+spacing and links. If needed, shorten labels and omit optional fields before
+omitting a selected token's mint or a material warning.
 
 ## Card format
 
-Use one card per distinct mint, with the actual number returned in the header.
-Fill placeholders from evidence; never print the template as a result.
+Inspect at most the top ten candidates from the screen or listing, then use
+reasoned comparison to return no more than three. Return three when three
+clearly pass and add useful contrast, two when only two are convincing, or
+one when only one stands out. Return no cards when none can be verified.
+Never pad the result to reach three.
 
 Choose symbols and emojis to suit the workflow and observed results, not a
 fixed palette. Discovery, a supported match, a coverage gap, a rejection and
@@ -57,10 +63,6 @@ icon. Token symbols remain the actual reported tickers.
 - **$[MARKET_CAP] mcap** | **$[VOLUME_24H] 24h volume** | **[TURNOVER]% turnover**
 - **[HOLDER_COUNT] holders** | **top 20: [TOP_20_SHARE]%** of supply (largest token accounts)
 - **[Social account](SOCIAL_MEDIA_URL)**
-- Top 5 holders (largest token accounts):
-  - `[WALLET]` | `[TOKEN_ACCOUNT]`
-
-    [AMOUNT_OF_TOKENS] tokens
 - [FINDING_MARKER] [material finding, when present]
 ```
 
@@ -68,11 +70,11 @@ The Pair and Quote mint rows apply to Stonkfun listings; omit them for other
 sources without pairing evidence. Omit missing optional quote name/category
 labels rather than printing placeholders.
 
-Repeat holder rows up to five times and cards for the actual results. Keep
-full mint, wallet and token-account addresses. A wallet authority can be a
-pool or program; the rows do not establish independent people. Positive
-markers must reflect the stated filters and evidence, never a buy
-recommendation. Make material concerns and unresolved checks visible even
+Repeat cards only for the selected results. Keep the full mint. Do not include
+top-holder wallet addresses, token-account addresses, holder balances or
+owner overlap in this listing format; those belong to an explicit investigation
+response. Positive markers must reflect the stated filters and evidence, never
+a buy recommendation. Make material concerns and unresolved checks visible
 when a candidate matches the filters.
 
 Do not add a scope or evidence footer. Show source attribution in the short
@@ -138,44 +140,12 @@ complete the template.
 - Missing values: write `unknown`, with one short reason when material.
   Do not render `$unknown`, `unknown%`, or guessed zeros. Missing social
   data is `Social: not reported` after a successful lookup, or
-  `Social: unknown` after unavailable/failed coverage. If holder rows are
-  unavailable, retain `Top 5 holders: unknown (not fetched / partial)`.
+  `Social: unknown` after unavailable/failed coverage. Do not add holder rows
+  to this listing format, even when holder data exists.
 - Readable numbers: use separators for counts and balances; K/M/B is fine
   for USD amounts. Round displayed ratios only after calculation and preserve
   nonzero values smaller than the display precision as `<0.01%`. Keep exact
   holder token quantities; never round a small nonzero holding into zero.
-
-## Holder rows and overlap
-
-Reuse `facts.holders.top_accounts` from existing token evidence. Take the
-first five largest returned accounts with positive balances. Each row uses
-`owner`, `token_account` and `amount_tokens`; alternatively convert
-`raw_amount` with that mint's verified `facts.mint.decimals` using exact
-decimal arithmetic. Never use a float `ui_amount` when an exact value is
-available. Unknown decimals mean labelled raw units, not a guessed balance.
-
-Keep separate accounts even when their owner repeats. A missing owner is
-`owner unresolved | TOKEN_ACCOUNT`; do not invent an associated account or
-promote another row to conceal the gap. If using a token-holders playbook,
-label its ranking “sampled owners” and retain every `sample_accounts` entry
-and its amount. An owner's sample total must not be assigned to one account.
-
-Match resolved owner addresses exactly across different mints. Highlight a
-repeated wallet in bold with a suitable marker or “shared holder” label in
-each affected card. Keep a compact overlap note within those cards, naming
-the full wallet and the other symbols plus exact mints.
-Compare all already available sample rows, not just the displayed five; if a
-repeat is outside the five, mention it in the note without implying that it
-is a top-five account. Report observed overlap, never coordinated buying,
-independent wallets, shared control or a confirmed bundle.
-
-Existing wallet inventory can also establish another positive holding:
-retain its mint, token-account address, exact amount and observation time.
-Distinguish this from membership in another token's top-holder sample.
-Unknown inventories cannot establish absence. Do not add wallet scans or
-transaction crawls merely to decorate a listing; use bounded investigation
-when that additional scope is requested. Reuse evidence and respect the
-total agreed request budget across commands.
 
 ## Filtering and ranking
 
@@ -184,12 +154,18 @@ Apply the user's hard filters first. Do not invent numerical cutoffs for
 keep the selected conditions in its criteria/evidence, without a filter recap
 in the results. A required unknown is unresolved, not a pass.
 
-Default memecoin priority is lexicographic:
+Select the final cards from the top ten using this priority:
 
 1. Lower reported top-20 supply share.
 2. Higher liquidity, then higher valid 24h turnover within the passed filters.
 3. Stronger reported organic score, then social evidence.
 4. Exact mint address to break remaining ties.
+
+Use judgment across the whole candidate, not a single metric. Prefer complete,
+fresh and internally consistent evidence. Penalize material authority, tax,
+liquidity, concentration or linked-wallet concerns. A missing field lowers
+confidence and may remove a candidate when it is required; it never becomes a
+zero. Explain a reason only inside a card when it changes that token's status.
 
 Unknown values sort after known values at the corresponding priority and
 stay visible. Use comparable populations for distribution and compatible
@@ -223,8 +199,8 @@ Overlap alone is an observation, not a suspicious-control finding. Use a
 momentum cue only for a measured, time-bounded momentum observation.
 
 Never pad a list with unknowns or rejected candidates. Check `other_matches`
-before selecting the final cards. If only one or two passed, return only
-those without explaining the shortfall. For zero matches or unavailable
+before selecting the final cards. If only one or two pass the reasoned review,
+return only those. For zero matches or unavailable
 results, use the one-line status rules above. Do not show placeholder cards
 or promote unresolved candidates to fill the requested count.
 
