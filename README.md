@@ -88,6 +88,19 @@ See [OpenClaw skills](https://docs.openclaw.ai/tools/skills) and
 - “Screen Stonkfun xstocks with $100k minimum liquidity and a website;
   rank by 24h volume and verify at most five mints.”
 - “Inspect five sampled owners of this mint and their shared holdings.”
+- “fresh-calls: find recent Jupiter tokens with $100,000–$1,000,000 market
+  cap, good holder distribution, social presence and organic score. Use
+  America/Mexico_City dates. If none qualify, show one weaker unreported
+  candidate with its weakness; otherwise say No good tokens scanned.”
+
+`fresh-calls` enables optional call history for `growr-screen`. It skips
+mints recorded as reported today or yesterday and records only the final
+selections. Without the keyword, screening can return previous picks.
+All runs must share a persistent Growr database. The mode checks for
+`good-call --check`, `--if-new`, `--timezone` and `search --store-snapshot`
+support; older pinned installations may need updating. See the skill's
+[fresh-call workflow](growr-screen/references/fresh-calls.md) for commands
+and date/delivery semantics.
 
 Reports preserve exact identities, amounts, coverage and evidence. A partial
 report can exit zero. Social presence is not authenticity, holder samples
