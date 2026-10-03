@@ -16,9 +16,13 @@ Leave screening evidence and deterministic ranking unchanged.
   including today, in the task/user's timezone. Use UTC if none is known.
   Pass the same `--timezone` to every check/save. This is two calendar
   dates, not a rolling 48-hour window. Old calls become eligible again.
-- Every run must use the same persistent `GROWR_DATABASE_PATH` (default
-  `~/.growr/growr.db`) in its execution environment. A new database per run
-  cannot prevent repeats. Do not read credentials or print database paths.
+- Every run must use the same persistent database. Current Growr defaults
+  to `~/.config/growr/growr.db` (or `$XDG_CONFIG_HOME/growr/growr.db`) and
+  reuses existing `~/.growr/growr.db` if the new default file is absent.
+  Older builds use that legacy location directly. Set `GROWR_DATABASE_PATH`
+  in the execution environment or selected `.env` to choose explicitly.
+  A new database per run cannot prevent repeats. Do not read credentials
+  or print database paths.
 - After the ordinary doctor check, inspect `growr good-call --help` for
   `--check`, `--if-new`, `--timezone`, and `growr search --help` for
   `--store-snapshot`. Older 0.3.x installations can pass doctor but lack

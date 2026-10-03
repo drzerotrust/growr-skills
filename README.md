@@ -43,6 +43,20 @@ project-owned `compatibility.json` drives CI; OpenClaw does not parse it.
 
 ## Configuration
 
+After installing with uv, create the user configuration file as the same
+user who will run Growr:
+
+```bash
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/growr"
+touch "${XDG_CONFIG_HOME:-$HOME/.config}/growr/.env"
+chmod 600 "${XDG_CONFIG_HOME:-$HOME/.config}/growr/.env"
+```
+
+Edit that file to set `JUPITER_API_KEY` for Jupiter discovery and,
+optionally, `HELIUS_API_KEY` for Helius RPC. The installer does not create
+or populate the file. Run `growr doctor --json` after saving it to check
+configuration locally; doctor does not validate credentials with providers.
+
 Set provider variables in the execution environment, or set `GROWR_ENV_FILE`
 to an absolute path to a private dotenv file. Existing environment values
 take precedence. Without an explicit file, Growr uses its checkout `.env`
@@ -53,6 +67,14 @@ Jupiter discovery needs `JUPITER_API_KEY`; `HELIUS_API_KEY` selects Helius
 RPC, or `SOLANA_RPC_URL` supplies a custom endpoint. Public RPC and Stonkfun
 search need no keys. Offline reranking needs no providers. Never commit keys,
 embed them in commands, or copy dotenv contents into an agent response.
+
+Current Growr creates new snapshot/call databases at
+`~/.config/growr/growr.db` (or `$XDG_CONFIG_HOME/growr/growr.db`) when storage
+is first used. Existing `~/.growr/growr.db` is reused if the new default
+database is absent. Older builds use that legacy location directly.
+Set `GROWR_DATABASE_PATH` to an absolute filename in `.env` or the execution
+environment to choose explicitly. Keep the same database across runs for
+`fresh-calls` history; a separate database has separate recommendations.
 
 ## Load the skills
 
