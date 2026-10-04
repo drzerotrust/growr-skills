@@ -110,14 +110,35 @@ See [OpenClaw skills](https://docs.openclaw.ai/tools/skills) and
 - “Screen Stonkfun xstocks with $100k minimum liquidity and a website;
   rank by 24h volume and verify at most five mints.”
 - “Inspect five sampled owners of this mint and their shared holdings.”
+- **“Run the degenerate Growr-skill playbook.”**
 - “fresh-calls: find recent Jupiter tokens with $100,000–$1,000,000 market
   cap, good holder distribution, social presence and organic score. Use
   America/Mexico_City dates. If none qualify, show one weaker unreported
-  candidate with its weakness; otherwise say No good tokens scanned.”
+  candidate with its weakness. If none are eligible, say No good tokens scanned.”
+
+The **degenerate** profile needs only that short instruction. It combines
+Jupiter recent, trending, traded and organic-score feeds (1h for ranked
+feeds), requires **$10,000–$500,000 market cap**, first-pool age up to
+**48 hours**, and reported social presence. It samples up to 100 unique
+mints and verifies up to 20 with a shared 80-RPC/four-discovery-HTTP budget.
+The screening deadline is 600 seconds. The agent compares distribution,
+liquidity and organic/social evidence, then returns the best one to three
+unreported picks, or one eligible weaker pick with its known weakness.
+Missing evidence is not automatically a weaker pick.
+
+The profile automatically enables call history in **America/Mexico_City**;
+you do not need to add `fresh-calls`. Explicit overrides, including disabling
+history, win. With no eligible result it says `No good tokens scanned`;
+assessment failures use a short failure/incomplete message. Final snapshot
+bookkeeping may add up to three HTTP calls. See the
+[saved recipe](growr-screen/references/degenerate.md). It requires a Growr
+build whose `playbook token-screen --help` includes `--feeds`; the skill
+checks this and reports an unavailable capability on older installations.
 
 `fresh-calls` enables optional call history for `growr-screen`. It skips
 mints recorded as reported today or yesterday and records only the final
-selections. Without the keyword, screening can return previous picks.
+selections. Outside the degenerate profile, screening without the keyword
+can return previous picks. Explicitly disabling history always wins.
 All runs must share a persistent Growr database. The mode checks for
 `good-call --check`, `--if-new`, `--timezone` and `search --store-snapshot`
 support; older pinned installations may need updating. See the skill's
@@ -151,8 +172,12 @@ turn a wallet inventory or transaction explanation into a market shortlist.
 
 Memecoin shortlists inspect up to ten candidates and return the strongest one,
 two or three. Cards include full mints, market cap, 24h volume, turnover,
-holder count, reported top-20 share and social links. Ranking prioritizes
-distribution, then liquidity/turnover, then organic and social evidence.
+holder count, reported top-20 share and social platform names. Each card links
+to `https://phantom.com/tokens/solana/<mint>` as `Open in Phantom`; these are
+the only URLs in the memecoin output. Social platforms appear as names only,
+such as `X · Telegram`, with website presence indicated separately when
+reported. Ranking prioritizes distribution, then liquidity/turnover, then
+organic and social evidence.
 Stonkfun cards also show the reported trading pair, quote asset and quote mint
 when available; missing pairing information stays unknown.
 Unavailable data stays unknown and results are never padded. Keep the complete

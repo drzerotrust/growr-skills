@@ -1,0 +1,18 @@
+{
+  "criteria_version": "1.0",
+  "verify_on_chain": true,
+  "max_age_seconds": 900,
+  "requirements": [
+    {"field": "market_cap_usd", "op": "gte", "value": "10000"},
+    {"field": "market_cap_usd", "op": "lte", "value": "500000"},
+    {"field": "first_pool_age_hours", "op": "gte", "value": "0"},
+    {"field": "first_pool_age_hours", "op": "lte", "value": "48"},
+    {"field": "has_social", "op": "eq", "value": true}
+  ],
+  "ranking": [
+    {"field": "top_20_accounts_pct", "direction": "asc"},
+    {"field": "liquidity_usd", "direction": "desc"},
+    {"field": "organic_score", "direction": "desc"},
+    {"field": "social_score", "direction": "desc"}
+  ]
+}

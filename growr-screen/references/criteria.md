@@ -57,6 +57,14 @@ Live discovery:
 
 - Jupiter: `--provider jupiter --query JUP`; or `--feed recent`; or a ranked
   feed toptraded/toptrending/toporganicscore with `--interval 5m|1h|6h|24h`.
+  Use `--feeds recent toptrending toptraded toporganicscore` to combine
+  feeds under one budget; the interval applies only to ranked feeds.
+  All selected feeds are read once before sampling unique mints in turns.
+  `--candidate-limit` caps the combined sample, not each feed separately;
+  ranked requests each use that value as their result limit. Reports retain
+  per-feed request/status/counts under `scope.feeds` and overall omissions.
+  Duplicate feed names, `--feed` plus `--feeds`, and query/feed combinations
+  are invalid. Existing single-feed defaults remain unchanged.
 - Stonkfun: `--provider stonks --feed recent|marketCap|volume`, optionally
   `--category xstock|prestock|custom|collectibles|currencies|leverage`.
 - Stonkfun query: `--provider stonks --query te --sort marketCap|volume|newest`.

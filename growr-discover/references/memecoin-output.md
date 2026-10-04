@@ -29,13 +29,16 @@ Unless the user explicitly asks for diagnostics, explanation or evidence:
   budgets, process narration, evidence references or routine disclaimers.
 - Do not append reasons why nothing passed, summaries of rejected candidates,
   “no other listings passed,” follow-up offers or a closing paragraph.
+- Each token card must include one clickable Phantom link. Phantom token
+  links are the only URLs in this output; omit social, website, explorer,
+  provider and image URLs, including bare domains that may become links.
 
 Keep criteria, exclusions, provenance, timestamps and saved evidence in the
 underlying reports. Use them to verify and rank candidates without copying
 that bookkeeping into the response. Do not add narration before the result.
 Keep the final response at or below 3,000 characters, including headings,
-spacing and links. If needed, shorten labels and omit optional fields before
-omitting a selected token's mint or a material warning.
+spacing and links. If needed, shorten labels and omit optional fields while
+preserving each selected token's full mint, Phantom link and material warnings.
 
 ## Card format
 
@@ -58,11 +61,12 @@ icon. Token symbols remain the actual reported tickers.
 [RESULT_MARKER] **[SYMBOL] — [Token name]**
 
 - Mint: `[MINT_ADDRESS]`
+- [Open in Phantom](https://phantom.com/tokens/solana/MINT_ADDRESS)
 - Pair: **[SYMBOL] / [QUOTE_SYMBOL]** · [QUOTE_NAME] · [QUOTE_CATEGORY]
 - Quote mint: `[QUOTE_MINT]`
 - **$[MARKET_CAP] mcap** | **$[VOLUME_24H] 24h volume** | **[TURNOVER]% turnover**
 - **[HOLDER_COUNT] holders** | **top 20: [TOP_20_SHARE]%** of supply (largest token accounts)
-- **[Social account](SOCIAL_MEDIA_URL)**
+- Social: [REPORTED_PLATFORM_NAMES]
 - [FINDING_MARKER] [material finding, when present]
 ```
 
@@ -93,6 +97,10 @@ complete the template.
 - Identity: use `identity.mint` and same-mint names/symbols from discovery or
   token metadata. A symbol match alone cannot join records. Group repeated
   Stonkfun pools into one mint card while retaining their separate evidence.
+- Phantom: build `https://phantom.com/tokens/solana/<mint>` from that exact
+  `identity.mint` and label the link `Open in Phantom`. Replace the template's
+  `MINT_ADDRESS` with the full mint; never use a symbol, quote mint, pool or
+  token-account address. Keep the separate raw mint row for copying.
 - Stonkfun pairing: display the reported pair from the same pool record's
   `identity.symbol` and `facts.quote_symbol`, with `facts.quote_name`
   and `facts.quote_category` when present. Show the full
@@ -134,9 +142,13 @@ complete the template.
   “top holders” audit percentage, top-ten share, largest-wallet share, or
   the sum of only the five displayed rows. Another source is usable only
   when its measure explicitly specifies top 20 and its population is stated.
-- Social: show actual normalized `social.links` entries for the same mint,
-  including a website when present. Make reported social links clickable and
-  bold. Do not invent a handle from a symbol or label a link as authenticated.
+- Social: use normalized `social.links` evidence for the same mint to list
+  only reported platform names, such as `Social: X · Telegram · Discord`.
+  Deduplicate platform names; omit handles, domains and social URLs. Show
+  website presence separately as `Website: reported` when present, without
+  its URL. A website alone is not social-media presence. Do not infer a
+  platform from the symbol or imply authenticity, activity or engagement.
+  Keep original URLs in the underlying evidence, not the delivered cards.
 - Missing values: write `unknown`, with one short reason when material.
   Do not render `$unknown`, `unknown%`, or guessed zeros. Missing social
   data is `Social: not reported` after a successful lookup, or
