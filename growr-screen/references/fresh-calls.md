@@ -1,6 +1,7 @@
 # Fresh calls: skip recent recommendations
 
-Use only when `fresh-calls` is enabled by the user's task. This rule applies
+Use when the user's task enables `fresh-calls` or selects the degenerate
+profile, unless repeat suppression is explicitly disabled. This rule applies
 to the final selections, including an explicitly requested weaker fallback.
 Leave screening evidence and deterministic ranking unchanged.
 
