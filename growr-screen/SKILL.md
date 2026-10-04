@@ -1,7 +1,7 @@
 ---
 name: growr-screen
 description: Screen and compare Solana tokens against a user's measurable criteria using Growr. Use for best-fit shortlists, listing evaluation, explicit mint comparisons, and offline reranking of saved evidence.
-metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv", "kind": "uv", "package": "git+https://github.com/drzerotrust/growr.git@v0.3.0", "bins": ["growr"], "label": "Install Growr v0.3.0 (uv)"}]}}
+metadata: {"openclaw": {"requires": {"bins": ["growr"]}, "install": [{"id": "uv", "kind": "uv", "package": "git+https://github.com/drzerotrust/growr.git@v0.3.1", "bins": ["growr"], "label": "Install Growr v0.3.1 (uv)"}]}}
 ---
 
 # Growr token screening
